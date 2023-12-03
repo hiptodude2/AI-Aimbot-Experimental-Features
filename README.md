@@ -1,5 +1,4 @@
-**CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**
-
+**CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**, For Arduino Leonardo No need for USB Host Shield as the only reason it was added was to bypass games blocking mouse events.
 ## Expanded AI Aimbot by Rootkit: Expanded Edition
 
 ### Features
@@ -16,7 +15,6 @@
 
 config.py
 
-
 ### Future Updates
 
 - [ ] Easy Model Picker
@@ -25,3 +23,5 @@ config.py
 - [ ] Easy Bind setting
 - [ ] Config UI
 - [ ] Onnx, Torch Support
+
+### If using Arduino Leonardo, Upload sketch in Mouse.ino
