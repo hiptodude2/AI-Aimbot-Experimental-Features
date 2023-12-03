@@ -20,7 +20,6 @@ config.py
 - [ ] Easy Model Picker
 - [ ] Prediction when enemy moves x,y,z - useful for low fps
 - [ ] Trigger Bot
-- [ ] Easy Bind setting
 - [ ] Config UI
 - [ ] Onnx, Torch Support
 
