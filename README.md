@@ -1,3 +1,5 @@
+**CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**
+
 ## Expanded AI Aimbot by Rootkit: Expanded Edition
 
 ### Features
@@ -22,3 +24,4 @@ config.py
 - [ ] Trigger Bot
 - [ ] Easy Bind setting
 - [ ] Config UI
+- [ ] Onnx, Torch Support
