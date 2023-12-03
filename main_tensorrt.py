@@ -108,7 +108,7 @@ def main():
 
                 # Check if the target is within the FOV circle
                 if dist_from_center <= fovCircleSize:
-                    if win32api.GetKeyState(0x14): 
+                    if win32api.GetKeyState(win32con.VK_CAPITAL) & 0x8000: 
                         if ArduinoLeonardo:
                             # Send mouse movement command to Arduino
                             mouse_move_cmd = "{},{}\n".format(int(mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp))
