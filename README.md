@@ -22,5 +22,7 @@ config.py
 - [ ] Trigger Bot
 - [ ] Config UI
 - [ ] Onnx, Torch Support
+- [ ] Kalman filter
+
 
 ### If using Arduino Leonardo, Upload sketch in Mouse.ino
