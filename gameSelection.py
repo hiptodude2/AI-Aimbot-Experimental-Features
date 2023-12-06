@@ -6,8 +6,9 @@ from typing import Union
 # Could be do with
 # from config import *
 # But we are writing it out for clarity for new devs
-from config import screenShotHeight, screenShotWidth
+from config import screenShotHeight, screenShotWidth, autoGameDetection, gameName
 
+# Union for compatibility
 def gameSelection() -> (bettercam.BetterCam, int, Union[int, None]):
     # Selecting the correct game window
     try:
@@ -17,15 +18,42 @@ def gameSelection() -> (bettercam.BetterCam, int, Union[int, None]):
             # only output the window if it has a meaningful title
             if window.title != "":
                 print("[{}]: {}".format(index, window.title))
-        # have the user select the window they want
-        try:
-            userInput = int(input(
-                "Please enter the number corresponding to the window you'd like to select: "))
-        except ValueError:
-            print("You didn't enter a valid number. Please try again.")
-            return
-        # "save" that window as the chosen window for the rest of the script
-        videoGameWindow = videoGameWindows[userInput]
+
+        # From Cloud's Extended version
+        if autoGameDetection:
+            # Filter windows by the specified game name
+            filteredWindows = [window for window in videoGameWindows if gameName.lower() in window.title.lower()]
+
+            if not filteredWindows:
+                print(f"No windows found for the game '{gameName}'. Exiting.")
+                return None
+
+            if len(filteredWindows) == 1:
+                videoGameWindow = filteredWindows[0]
+            else:
+                # If multiple windows match, let the user choose
+                print("=== Matching Game Windows ===")
+                for index, window in enumerate(filteredWindows):
+                    print(f"[{index}]: {window.title}")
+                try:
+                    userInput = int(input("Please enter the number corresponding to the window you'd like to select: "))
+                    videoGameWindow = filteredWindows[userInput]
+                except ValueError:
+                    print("You didn't enter a valid number. Please try again.")
+                    return None
+                except IndexError:
+                    print("Invalid selection. Please try again.")
+                    return None
+        else:
+            # Manual selection process
+            try:
+                userInput = int(input("Please enter the number corresponding to the window you'd like to select: "))
+            except ValueError:
+                print("You didn't enter a valid number. Please try again.")
+                return
+            # "save" that window as the chosen window for the rest of the script
+            videoGameWindow = videoGameWindows[userInput]
+
     except Exception as e:
         print("Failed to select game window: {}".format(e))
         return None
@@ -33,7 +61,7 @@ def gameSelection() -> (bettercam.BetterCam, int, Union[int, None]):
     # Activate that Window
     activationRetries = 30
     activationSuccess = False
-    while (activationRetries > 0):
+    while activationRetries > 0:
         try:
             videoGameWindow.activate()
             activationSuccess = True
@@ -50,10 +78,12 @@ def gameSelection() -> (bettercam.BetterCam, int, Union[int, None]):
         # wait a little bit before the next try
         time.sleep(3.0)
         activationRetries = activationRetries - 1
+
     # if we failed to activate the window then we'll be unable to send input to it
     # so just exit the script now
-    if activationSuccess == False:
+    if not activationSuccess:
         return None
+
     print("Successfully activated the game window...")
 
     # Starting screenshoting engine
