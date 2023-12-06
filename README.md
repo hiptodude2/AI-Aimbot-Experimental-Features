@@ -4,7 +4,7 @@
 - [ ] Recoil Control
 - [ ] FOV Circle
 - [ ] Chroma?!?!
-- [ ] Visuals
+- [ ] Visuals (some sort of limited esp)
 - [ ] Yolov8 Models (This shit not finishing it takes so long hollyyyyy ghsitttt)
 - [ ] Yolov8 Script
 
