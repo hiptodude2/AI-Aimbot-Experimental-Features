@@ -18,11 +18,15 @@ confidence = 0.4
 aaTriggerBotWidth = 50
 aaTriggerBotHeight = 50
 
+# Automatic Game Detection
+autoGameDetection = False
+gameName = ""
+
 # What key to press to quit and shutdown the autoaim
 aaQuitKey = "Q"
 
 # If you want to main slightly upwards towards the head
-headshot_mode = True
+headshot_mode = False
 
 # Displays the Corrections per second in the terminal
 cpsDisplay = True
