@@ -13,6 +13,11 @@ aaMovementAmp = .4
 # Person Class Confidence
 confidence = 0.4
 
+# Determine if the target is within set number of pixels from the center
+# Fortnite = 50 Aimlabs = 12
+aaTriggerBotWidth = 50
+aaTriggerBotHeight = 50
+
 # What key to press to quit and shutdown the autoaim
 aaQuitKey = "Q"
 
