@@ -111,6 +111,15 @@ def main():
                         mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
                 last_mid_coord = [xMid, yMid]
 
+                # Triggerbot
+                # Basically just presses left click down and up really fast...
+                # Wonder bot crazy (Make this more effictient like for example hold it down for a certain amount of time like 0.2 seconds after seeing enemy blah blah (sleep 0.2) :( )
+                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight: # Left Alt Key
+                    # Press the mouse button
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+                    # Release the mouse button
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+
             else:
                 last_mid_coord = None
 
