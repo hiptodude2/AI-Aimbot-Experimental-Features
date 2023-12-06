@@ -1,6 +1,6 @@
 ## Experimental Features
 - [x] Triggerbot
-- [ ] Automatic Game Selection
+- [x] Automatic Game Selection
 - [ ] Recoil Control
 - [ ] FOV Circle
 - [ ] Chroma?!?!
