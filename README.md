@@ -18,11 +18,9 @@ config.py
 ### Future Updates
 
 - [ ] Easy Model Picker
-- [ ] Prediction when enemy moves x,y,z - useful for low fps
 - [ ] Trigger Bot
 - [ ] Config UI
 - [ ] Onnx, Torch Support
-- [ ] Kalman filter
 
 
 ### If using Arduino Leonardo, Upload sketch in Mouse.ino
