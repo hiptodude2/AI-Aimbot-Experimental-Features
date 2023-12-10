@@ -1,5 +1,4 @@
-**CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**, For Arduino Leonardo No need for USB Host Shield as the only reason it was added was to bypass games blocking mouse events.
-## Expanded AI Aimbot by Rootkit: Expanded Edition
+**CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**, For Arduino Leonardo No need for USB Host Shield, you can spoof arduino leonardo and it should be just fine.
 
 ### Features
 
