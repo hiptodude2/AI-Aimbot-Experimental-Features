@@ -4,7 +4,7 @@
 
 1. **Changed to Manual Trigger Mode**: To activate aiming, simply hold down the Caps Lock key. This provides more control, as it will not automatically aim.
 
-2. **Automatic Game Detection**: The aimbot can now automatically detect and adapt to the game you are playing. To enable this feature, set the configuration to `true`. For example, if you're playing "Farlight 84", the aimbot will automatically select that game. If you prefer manual selection, set this to `false`.
+2. **Automatic Game Detection**: The aimbot can now automatically detect the game you are playing. To enable this feature, set the configuration to `true`. For example, if you're playing "Farlight 84", the aimbot will automatically select that game. If you prefer manual selection, set this to `false`.
 
 3. **Field of View (FOV) Circle Adjustment**: The default size of the FOV circle is set to 100. The aimbot will only target enemies within this circle. If an enemy is outside of this specified FOV, the aimbot will not move mouse. You can see the FOV circle if visuals are turned on.
 
