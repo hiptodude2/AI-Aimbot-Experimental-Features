@@ -16,6 +16,7 @@ config.py
 
 ### Future Updates
 
+- [ ] Offsets switching constantly, (Head and body changing frequently - more legit)
 - [ ] Easy Model Picker
 - [ ] Trigger Bot
 - [ ] Config UI
