@@ -66,6 +66,11 @@ aaTriggerBotHeight = 50
 aaTriggerBotWidth = 50
 
 
+# FOV Circle (Visuals = True to see)
+fovCircle = True
+fovCircleSize = 150
+
+
 
 # main_onnx.py only!
 
