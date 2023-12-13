@@ -14,4 +14,4 @@ psutil
 dxcam
 onnxruntime_directml
 bettercam
-serial
+pyserial
