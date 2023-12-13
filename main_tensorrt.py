@@ -13,7 +13,7 @@ import cupy as cp
 # Could be do with
 # from config import *
 # But we are writing it out for clarity for new devs
-from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, useMask, maskSide, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen, screenShotWidth
+from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, maskSide, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen, screenShotWidth
 import gameSelection
 
 def main():
