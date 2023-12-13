@@ -1,4 +1,4 @@
-## Experimental Features
+## Experimental Features For Tensorrt Version Only!
 - [x] Triggerbot
 - [x] Automatic Game Selection
 - [x] Mask sides -JinxTheCatto
