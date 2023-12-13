@@ -2,12 +2,12 @@
 
 
 # Portion of screen to be captured (This forms a square/rectangle around the center of screen)
-screenShotHeight = 640
-screenShotWidth = 640
+screenShotHeight = 320
+screenShotWidth = 320
 
 
 # Use left or right depending on where the interfering object is, useful for 3rd player models or large guns - JinxTheCatto
-useMask = True
+useMask = False
 maskWidth = 180
 maskHeight = 450
 
@@ -16,11 +16,11 @@ maskSide = "Left"
 
 
 # What key to press to quit and shutdown the autoaim
-aaQuitKey = "P"
+aaQuitKey = "Q"
 
 
 # Set to True if you want to get the visuals
-visuals = True
+visuals = False
 
 
 
@@ -28,7 +28,7 @@ visuals = True
 
 
 # Person Class Confidence
-confidence = 0.6
+confidence = 0.4
 
 
 # Autoaim mouse movement amplifier
@@ -45,7 +45,7 @@ cpsDisplay = True
 
 # Automatic Game Detection
 autoGameDetection = False
-gameName = "Fortnite"
+gameName = ""
 
 
 
@@ -62,8 +62,8 @@ headshot_mode = False
 
 # Determine if the target is within set number of pixels from the center
 # Fortnite = 50 Aimlabs = 12
-aaTriggerBotHeight = 45
-aaTriggerBotWidth = 45
+aaTriggerBotHeight = 50
+aaTriggerBotWidth = 50
 
 
 
@@ -74,4 +74,4 @@ aaTriggerBotWidth = 45
 # 1 - CPU
 # 2 - AMD
 # 3 - NVIDIA
-onnxChoice = 3
+onnxChoice = 2
