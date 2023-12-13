@@ -3,7 +3,7 @@
 - [x] Automatic Game Selection
 - [x] Mask sides -JinxTheCatto
 - [ ] Recoil Control
-- [ ] FOV Circle
+- [x] FOV Circle
 - [ ] Chroma?!?!
 - [ ] Visuals (some sort of limited esp)
 - [x] Yolov8 Models (In the discord Showcase channel)
