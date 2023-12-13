@@ -13,7 +13,7 @@ import cupy as cp
 # Could be do with
 # from config import *
 # But we are writing it out for clarity for new devs
-from config import aaMovementAmp, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen
+from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, useMask, maskSide, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen, screenShotWidth
 import gameSelection
 
 def main():
@@ -25,7 +25,7 @@ def main():
     sTime = time.time()
 
     # Loading Yolo5 Small AI Model
-    model = DetectMultiBackend('yolov5s320Half.engine', device=torch.device(
+    model = DetectMultiBackend('best640.engine', device=torch.device(
         'cuda'), dnn=False, data='', fp16=True)
     stride, names, pt = model.stride, model.names, model.pt
 
@@ -42,8 +42,11 @@ def main():
                 # If the image has an alpha channel, remove it
                 npImg = npImg[:, :, :, :3]
 
-            if useMask:
-                npImg[:, -maskHeight:, :maskWidth, :] = 0
+            if useMask: # JinxTheCatto
+                if maskSide == "Right":
+                    npImg[:, -maskHeight:, (screenShotWidth - maskWidth):, :] = 0
+                elif maskSide == "Left":
+                    npImg[:, -maskHeight:, :maskWidth, :] = 0
 
             im = npImg / 255
             im = im.astype(cp.half)
@@ -99,22 +102,21 @@ def main():
 
                 box_height = targets.iloc[0].height
                 if headshot_mode:
-                    headshot_offset = box_height * 0.38
+                    headshot_offset = box_height * 0.37
                 else:
                     headshot_offset = box_height * 0.2
 
                 mouseMove = [xMid - cWidth, (yMid - headshot_offset) - cHeight]
 
+                #win32api.GetKeyState(0x58) and 
                 # Moving the mouse
-                if win32api.GetKeyState(0x14):
+                if win32api.GetKeyState(0x58) and win32api.GetKeyState(0x02) < 0: # X for on and off and right click for toggle
                     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
                         mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
                 last_mid_coord = [xMid, yMid]
 
                 # Triggerbot
-                # Basically just presses left click down and up really fast...
-                # Wonder bot crazy (Make this more effictient like for example hold it down for a certain amount of time like 0.2 seconds after seeing enemy blah blah (sleep 0.2) :( )
-                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight: # Left Alt Key
+                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
                     # Press the mouse button
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
                     # Release the mouse button
