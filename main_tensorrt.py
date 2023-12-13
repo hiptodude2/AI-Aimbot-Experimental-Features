@@ -108,11 +108,29 @@ def main():
 
                 mouseMove = [xMid - cWidth, (yMid - headshot_offset) - cHeight]
 
-                # Moving the mouse
-                if win32api.GetKeyState(0x14): # Caps lock for toggle
-                    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
-                        mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
-                last_mid_coord = [xMid, yMid]
+                # Calculate distance from the center of the screen
+                dist_from_center = np.sqrt(mouseMove[0]**2 + mouseMove[1]**2)
+
+                
+                if fovCircle:
+
+                    # Check if the target is within the FOV circle - Cloud :)
+                    if dist_from_center <= fovCircleSize:
+
+                        # Moving the mouse
+                        if win32api.GetKeyState(0x02) < 0: # Caps lock for toggle
+                            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
+                                mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
+                    last_mid_coord = [xMid, yMid]
+                    
+                else:
+
+                    # Moving the mouse
+                    if win32api.GetKeyState(0x02) < 0: # Caps lock for toggle
+                            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
+                                mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
+                    last_mid_coord = [xMid, yMid]
+
 
                 # Triggerbot    Alt for Toggle    Settings in config.py
                 if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
@@ -121,12 +139,18 @@ def main():
                     # Release the mouse button
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
+            
             else:
                 last_mid_coord = None
 
             # See what the bot sees
             if visuals:
                 npImg = cp.asnumpy(npImg[0])
+
+                # Display FOV Circle - Cloud :)
+                if fovCircle:
+                    cv2.circle(npImg, (cWidth, cHeight), fovCircleSize, (0, 0, 255), 2)
+                
                 # Loops over every item identified and draws a bounding box
                 for i in range(0, len(targets)):
                     halfW = round(targets["width"][i] / 2)
