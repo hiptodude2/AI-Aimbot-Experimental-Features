@@ -1,6 +1,7 @@
 ## Experimental Features
 - [x] Triggerbot
 - [x] Automatic Game Selection
+- [x] Mask sides -JinxTheCatto
 - [ ] Recoil Control
 - [ ] FOV Circle
 - [ ] Chroma?!?!
