@@ -4,7 +4,7 @@
 - [x] Mask sides -JinxTheCatto
 - [ ] Recoil Control
 - [x] FOV Circle
-- [ ] Chroma?!?!
+- [ ] UI?!?!
 - [ ] Visuals (some sort of limited esp)
 - [x] Yolov8 Models (In the discord Showcase channel)
 - [ ] Yolov8 Script
