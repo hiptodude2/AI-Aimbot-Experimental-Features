@@ -108,14 +108,13 @@ def main():
 
                 mouseMove = [xMid - cWidth, (yMid - headshot_offset) - cHeight]
 
-                #win32api.GetKeyState(0x58) and 
                 # Moving the mouse
-                if win32api.GetKeyState(0x58) and win32api.GetKeyState(0x02) < 0: # X for on and off and right click for toggle
+                if win32api.GetKeyState(0x14): # Caps lock for toggle
                     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
                         mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
                 last_mid_coord = [xMid, yMid]
 
-                # Triggerbot
+                # Triggerbot    Alt for Toggle    Settings in config.py
                 if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
                     # Press the mouse button
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
