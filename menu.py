@@ -4,7 +4,7 @@ import subprocess
 import os
 
 app = ctk.CTk()
-app.title("AI Expanded Menu")
+app.title("Ares Menu")
 app.geometry("900x750")
 
 
