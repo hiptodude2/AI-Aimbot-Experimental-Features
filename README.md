@@ -1,3 +1,5 @@
+**NEW UI** Easier to configurate and run!
+
 **CURRENTLY ONLY MAIN_TENSORRT.PY WORKS**, For Arduino Leonardo No need for USB Host Shield, you can spoof arduino leonardo and it should be just fine.
 
 ### Features
@@ -10,16 +12,19 @@
 
 4. **Arduino Leonardo Support**: For those who have an Arduino Leonardo, enable support by setting the corresponding configuration to `True`. If you don't use an Arduino Leonardo, keep this setting as `False`, and the aimbot will default to using the win32 library for mouse movement.
 
+5. **Body Part Selector**
+
+6 **Randomized Body Part**
+
+7 **Model picker**
+
 ### Configuration Guide
 
-config.py
+UI
 
 ### Future Updates
 
-- [ ] Offsets switching constantly, (Head and body changing frequently - more legit)
-- [ ] Easy Model Picker
 - [ ] Trigger Bot
-- [ ] Config UI
 - [ ] Onnx, Torch Support
 
 
