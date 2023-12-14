@@ -29,3 +29,11 @@ UI
 
 
 ### If using Arduino Leonardo, Upload sketch in Mouse.ino
+
+Run this for Fortnite model
+
+python .\export.py --weights ./fort.pt --include engine --half --imgsz 320 320 --device 0
+
+"Run the Export Script 🏃‍♂️💻 Time to execute export.py with the following command. Patience is key; it might look frozen, but it's just concentrating hard! Can take up to 20 mintues."
+
+Love you Rootkit ❤️
