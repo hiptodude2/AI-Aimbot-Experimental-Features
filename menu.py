@@ -90,7 +90,7 @@ mask_height_entry = create_setting_widget(frame, "Mask Height", mask_settings_st
 create_section_title(frame, "Game & Aim Settings", game_aim_settings_start_row, 4)
 auto_game_detection_checkbox = create_setting_widget(frame, "Automatic Game Detection", game_aim_settings_start_row + 1, 0, widget_type=ctk.CTkCheckBox)
 game_name_entry = create_setting_widget(frame, "Game Name", game_aim_settings_start_row + 1, 2)
-aa_movement_amp_entry = create_setting_widget(frame, "Aimbot Sensitivity", game_aim_settings_start_row + 2, 0)
+aa_movement_amp_entry = create_setting_widget(frame, "Aim.Bot Sensitivity", game_aim_settings_start_row + 2, 0)
 confidence_entry = create_setting_widget(frame, "Aim Confidence", game_aim_settings_start_row + 2, 2)
 fov_circle_size_entry = create_setting_widget(frame, "FOV Circle Size", game_aim_settings_start_row + 3, 0)
 body_part_selector = create_setting_widget(frame, "Body Part Selector", game_aim_settings_start_row + 4, 0, widget_type=ctk.CTkComboBox, values=["Head", "Neck", "Body", "Pelvis"])
