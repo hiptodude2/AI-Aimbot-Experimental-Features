@@ -8,9 +8,20 @@ import pandas as pd
 from utils.general import (cv2, non_max_suppression, xyxy2xywh)
 from models.common import DetectMultiBackend
 import cupy as cp
-from config import aaMovementAmp, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen, fovCircleSize, ArduinoLeonardo, arduinoPort
+from config import aaMovementAmp, useMask, maskHeight, maskWidth, aaQuitKey, confidence, cpsDisplay, visuals, centerOfScreen, fovCircleSize, ArduinoLeonardo, arduinoPort, BodyPart, RandomBodyPart
 import gameSelection
 import serial
+import sys
+import random
+
+body_part_offsets = {
+    "Head": 0.37,
+    "Neck": 0.31,
+    "Body": 0.2,
+    "Pelvis": -0.2
+}
+
+model_file = sys.argv[1] if len(sys.argv) > 1 else 'fort.engine'
 
 # setup connection
 if ArduinoLeonardo:
@@ -25,10 +36,8 @@ def main():
     count = 0
     sTime = time.time()
 
-    # Loading Model
-    model = DetectMultiBackend('apex.engine', device=torch.device(
-        'cuda'), dnn=False, data='', fp16=True)
-    stride, names, pt = model.stride, model.names, model.pt
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = DetectMultiBackend(model_file, device=device, dnn=False, data='', fp16=True)
 
     # Used for colors drawn on bounding boxes
     COLORS = np.random.uniform(0, 255, size=(1500, 3))
@@ -62,9 +71,6 @@ def main():
                 s = ""
                 gn = torch.tensor(im.shape)[[0, 0, 0, 0]]
                 if len(det):
-                    for c in det[:, -1].unique():
-                        n = (det[:, -1] == c).sum()  # detections per class
-                        s += f"{n} {names[int(c)]}, "  # add to string
 
                     for *xyxy, conf, cls in reversed(det):
                         targets.append((xyxy2xywh(torch.tensor(xyxy).view(
@@ -95,13 +101,17 @@ def main():
                 xMid = targets.iloc[0].current_mid_x
                 yMid = targets.iloc[0].current_mid_y
 
-                box_height = targets.iloc[0].height
-                if headshot_mode:
-                    headshot_offset = box_height * 0.38
-                else:
-                    headshot_offset = box_height * 0.2
+                selected_body_part = BodyPart
+                random_body_part = RandomBodyPart
+                if random_body_part:
+                    selected_body_part = random.choice(list(body_part_offsets.keys()))
 
-                mouseMove = [xMid - cWidth, (yMid - headshot_offset) - cHeight]
+                body_part_offset = body_part_offsets.get(selected_body_part, 0.30)
+
+                box_height = targets.iloc[0].height
+                offset = box_height * body_part_offset
+
+                mouseMove = [xMid - cWidth, (yMid - offset) - cHeight]
 
                 # Calculate distance from the center of the screen
                 dist_from_center = np.sqrt(mouseMove[0]**2 + mouseMove[1]**2)
@@ -113,10 +123,8 @@ def main():
                             # Send mouse movement command to Arduino
                             mouse_move_cmd = "{},{}\n".format(int(mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp))
                             ser.write(mouse_move_cmd.encode('utf-8'))
-                        else:
-                            # move with win32 if not using arduino
-                            win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
-                last_mid_coord = [xMid, yMid]
+                            last_mid_coord = [xMid, yMid]
+
 
             else:
                 last_mid_coord = None
