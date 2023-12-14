@@ -37,3 +37,6 @@ python .\export.py --weights ./fort.pt --include engine --half --imgsz 320 320 -
 "Run the Export Script 🏃‍♂️💻 Time to execute export.py with the following command. Patience is key; it might look frozen, but it's just concentrating hard! Can take up to 20 mintues."
 
 Love you Rootkit ❤️
+
+
+IF YOU WANT TO RUN WITHOUT UI, JUST USE "PYTHON MAIN_TENSORRT.PY", SPECIFY YOUR MODEL IN CONFIG.PY
