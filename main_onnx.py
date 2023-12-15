@@ -5,23 +5,24 @@ import cv2
 import time
 import win32api
 import win32con
+import torch
 import pandas as pd
 import random
 from utils.general import (cv2, non_max_suppression, xyxy2xywh)
 from config import (
     aaMovementAmp, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode,
-    cpsDisplay, visuals, onnxChoice, centerOfScreen, fovCircle, fovCircleSize, aaTriggerBotWidth,
-    aaTriggerBotHeight, ArduinoLeonardo, arduinoPort, BodyPart, RandomBodyPart
+    cpsDisplay, visuals, onnxChoice, centerOfScreen, fovCircleSize,
+    ArduinoLeonardo, arduinoPort, BodyPart, RandomBodyPart
 )
 import gameSelection
 import serial
-
 body_part_offsets = {
     "Head": 0.37,
     "Neck": 0.31,
     "Body": 0.2,
     "Pelvis": -0.2
 }
+
 
 def main():
     # External Function for running the game selection menu (gameSelection.py)
@@ -154,9 +155,9 @@ def main():
                 if dist_from_center <= fovCircleSize:
                     if win32api.GetKeyState(win32con.VK_CAPITAL) & 0x8000: 
                         if ArduinoLeonardo:
-                            # Send mouse movement command to Arduino
+                        # Send mouse movement command to Arduino
                             mouse_move_cmd = "{},{}\n".format(int(mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp))
-                            ser.write(mouse_move_cmd.encode('utf-8'))
+                            serial.write(mouse_move_cmd.encode('utf-8'))
                             last_mid_coord = [xMid, yMid]
 
             else:
@@ -165,9 +166,6 @@ def main():
             # See visuals
             if visuals:
                 npImg = cp.asnumpy(npImg[0])
-                # Display FOV Circle
-            if fovCircle:
-                cv2.circle(npImg, (cWidth, cHeight), fovCircleSize, (0, 0, 255), 2)
 
             # Loops over every item identified and draws a bounding box
             for i in range(0, len(targets)):
@@ -201,7 +199,7 @@ def main():
             cv2.imshow('Live Feed', npImg)
             if (cv2.waitKey(1) & 0xFF) == ord('q'):
                 exit()
-camera.stop()
+    camera.stop()
 
 if __name__ == "__main__":
     try:
