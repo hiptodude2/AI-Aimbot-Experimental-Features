@@ -1,5 +1,4 @@
 import onnxruntime as ort
-import numpy as np
 import gc
 import numpy as np
 import cv2
