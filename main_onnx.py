@@ -8,16 +8,17 @@ import win32con
 import pandas as pd
 from utils.general import (cv2, non_max_suppression, xyxy2xywh)
 import torch
-from models.common import DetectMultiBackend  # Add this import for YOLO model
+import pygetwindow as gw  # Import pygetwindow
 
 # Add these imports for YOLO model
 from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
 import gameSelection
-import pygetwindow as gw  # Import pygetwindow
+
 
 def set_window_on_top(window):
     window.set_topmost()
     window.activate()
+
 
 def main():
     # External Function for running the game selection menu (gameSelection.py)
@@ -49,7 +50,6 @@ def main():
     last_mid_coord = None
     with torch.no_grad():
         while win32api.GetAsyncKeyState(ord(aaQuitKey)) == 0:
-
             # Getting Frame
             npImg = np.array(camera.get_latest_frame())
 
@@ -62,7 +62,7 @@ def main():
                 im = torch.from_numpy(npImg).to('cuda')
                 if im.shape[2] == 4:
                     # If the image has an alpha channel, remove it
-                    im = im[:, :, :3,]
+                    im = im[:, :, :3, ]
 
                 im = torch.movedim(im, 2, 0)
                 im = im.half()
@@ -113,7 +113,8 @@ def main():
             if len(targets) > 0:
                 if centerOfScreen:
                     # Compute the distance from the center
-                    targets["dist_from_center"] = np.sqrt((targets.current_mid_x - center_screen[0])**2 + (targets.current_mid_y - center_screen[1])**2)
+                    targets["dist_from_center"] = np.sqrt((targets.current_mid_x - center_screen[0]) ** 2 + (
+                            targets.current_mid_y - center_screen[1]) ** 2)
 
                     # Sort the data frame by distance from center
                     targets = targets.sort_values("dist_from_center")
@@ -140,7 +141,7 @@ def main():
                 mouseMove = [xMid - cWidth, (yMid - headshot_offset) - cHeight]
 
                 # Calculate distance from the center of the screen
-                dist_from_center = np.sqrt(mouseMove[0]**2 + mouseMove[1]**2)
+                dist_from_center = np.sqrt(mouseMove[0] ** 2 + mouseMove[1] ** 2)
 
                 if fovCircle:
                     # Check if the target is within the FOV circle
@@ -157,9 +158,9 @@ def main():
                         win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
                             mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
                     last_mid_coord = [xMid, yMid]
-
-                # Triggerbot    Alt for Toggle    Settings in config.py
-                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
+                    # Triggerbot    Alt for Toggle    Settings in config.py
+                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(
+                        mouseMove[1]) <= aaTriggerBotHeight:
                     # Press the mouse button
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
                     # Release the mouse button
@@ -216,7 +217,8 @@ def main():
                 if (cv2.waitKey(1) & 0xFF) == ord('q'):
                     exit()
 
-    camera.stop()
+camera.stop()
+
 
 
 if __name__ == "__main__":
@@ -226,4 +228,4 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exception(e)
         print(str(e))
-        print("Ask @Wonder for help in our Discord in the #ai-aimbot channel ONLY: https://discord.gg/rootkitorg")
+        print("Ask @Wonder for help in our Discord in the #ai-aimbot channel ONLY: https://discord.gg/rootkitorg if it does not work @MrBombs)
