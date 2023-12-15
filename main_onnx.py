@@ -13,6 +13,11 @@ from models.common import DetectMultiBackend  # Add this import for YOLO model
 # Add these imports for YOLO model
 from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
 import gameSelection
+import pygetwindow as gw  # Import pygetwindow
+
+def set_window_on_top(window):
+    window.set_topmost()
+    window.activate()
 
 def main():
     # External Function for running the game selection menu (gameSelection.py)
@@ -148,7 +153,7 @@ def main():
 
                 else:
                     # Moving the mouse
-                    if win32api.GetKeyState(0x02) < 0:  # Caps lock for toggle
+                    if win32api.GetKeyState(0x02) < 0:
                         win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(
                             mouseMove[0] * aaMovementAmp), int(mouseMove[1] * aaMovementAmp), 0, 0)
                     last_mid_coord = [xMid, yMid]
@@ -200,9 +205,17 @@ def main():
 
             # See visually what the Aimbot sees
             if visuals:
+                # Check if the window exists
+                if "Live Feed" not in [window.title for window in gw.getWindows()]:
+                    cv2.namedWindow('Live Feed', cv2.WINDOW_NORMAL)
+                    cv2.resizeWindow('Live Feed', cWidth, cHeight)
                 cv2.imshow('Live Feed', npImg)
+                live_feed_window = gw.getWindowsWithTitle('Live Feed')[0]
+                set_window_on_top(live_feed_window)
+
                 if (cv2.waitKey(1) & 0xFF) == ord('q'):
                     exit()
+
     camera.stop()
 
 
@@ -214,4 +227,3 @@ if __name__ == "__main__":
         traceback.print_exception(e)
         print(str(e))
         print("Ask @Wonder for help in our Discord in the #ai-aimbot channel ONLY: https://discord.gg/rootkitorg")
-
