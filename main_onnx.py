@@ -11,7 +11,7 @@ import torch
 from models.common import DetectMultiBackend  # Add this import for YOLO model
 
 # Add these imports for YOLO model
-from config import aaMovementAmp, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
+from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
 import gameSelection
 
 def main():
