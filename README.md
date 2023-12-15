@@ -1,4 +1,4 @@
-## Experimental Features For Tensorrt Version Only!
+## Experimental Features For Tensortt Only!! made working for main_onnx.py 👍
 - [x] Triggerbot
 - [x] Automatic Game Selection
 - [x] Mask sides -JinxTheCatto
