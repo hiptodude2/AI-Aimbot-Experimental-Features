@@ -71,6 +71,12 @@ fovCircle = True
 fovCircleSize = 150
 
 
+# Recoil Control
+aaRecoilControl = true 
+
+
+# Recoil Control amplifier
+aaRecoilControlAmp = 0.6
 
 # main_onnx.py only!
 
