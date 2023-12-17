@@ -20,7 +20,7 @@ aaQuitKey = "Q"
 
 
 # Set to True if you want to get the visuals
-visuals = False
+visuals = True
 
 
 
@@ -65,18 +65,17 @@ headshot_mode = False
 aaTriggerBotHeight = 50
 aaTriggerBotWidth = 50
 
+# Make it true or false so that the ai moves the aim to the enemy when recoil happens
+
+aaRecoilControl = True
+# Recoil control amp DO NOT TOUCH IF YOU DON'T KNOW WHAT YOU ARE DOING
+aaRecoilControlAmp = 0.6
 
 # FOV Circle (Visuals = True to see)
 fovCircle = True
 fovCircleSize = 150
 
 
-# Recoil Control
-aaRecoilControl = true 
-
-
-# Recoil Control amplifier
-aaRecoilControlAmp = 0.6
 
 # main_onnx.py only!
 
@@ -85,4 +84,4 @@ aaRecoilControlAmp = 0.6
 # 1 - CPU
 # 2 - AMD
 # 3 - NVIDIA
-onnxChoice = 2
+onnxChoice = 3
