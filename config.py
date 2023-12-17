@@ -16,4 +16,3 @@ cpsDisplay = True
 visuals = False
 centerOfScreen = True
 onnxChoice = 2
-selectedTheme = 'SweetkindClean.json'

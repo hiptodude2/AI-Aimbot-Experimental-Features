@@ -34,7 +34,7 @@ set_appearance_mode("Dark")  # Modes: system (default), light, dark
 
 #TODO theme switcher
 # NeonBanana MoonlitSky GhostTrain Oceanix Sweetkind LightMode Hades // 
-set_default_color_theme('./themes/' + (config.selectedTheme))
+set_default_color_theme('./themes/SweetkindClean.json')
 
 
 
@@ -140,7 +140,6 @@ def save_settings():
         config_file.write(f"visuals = {visuals_value}\n")
         config_file.write(f"centerOfScreen = {center_of_screen_value}\n")
         config_file.write(f"onnxChoice = {int(onnx_choice_entry.get())}\n")
-        config_file.write(f"selectedModel = 'SweetkindClean.json'\n")
     print("Settings saved")
 
 
