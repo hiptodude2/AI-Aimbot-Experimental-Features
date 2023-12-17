@@ -125,7 +125,7 @@ def save_settings():
         config_file.write(f"screenShotHeight = {screen_shot_height_entry.get()}\n")
         config_file.write(f"screenShotWidth = {screen_shot_width_entry.get()}\n")
         config_file.write(f"useMask = {use_mask_value}\n")
-        config_file.write(f"maskSide = {mask_side_entry.get()}\n")
+        config_file.write(f"maskSide = '{mask_side_entry.get()}'\n")
         config_file.write(f"maskWidth = {mask_width_entry.get()}\n")
         config_file.write(f"maskHeight = {mask_height_entry.get()}\n")
         config_file.write(f"autoGameDetection = {auto_game_detection_value}\n")
