@@ -134,12 +134,13 @@ def save_settings():
         config_file.write(f"confidence = {float(confidence_entry.get())}\n")
         config_file.write(f"fovCircle = {use_fov_circle_value}\n")
         config_file.write(f"fovCircleSize = {fov_circle_size_entry.get()}\n")
-        config_file.write(f"headshot_mode = {headshot_mode_value}\n")
+        config_file.write(f"headshotMode = {headshot_mode_value}\n")
         config_file.write(f"aaQuitKey = '{aa_quit_key_entry.get()}'\n")
         config_file.write(f"cpsDisplay = {cps_display_value}\n")
         config_file.write(f"visuals = {visuals_value}\n")
         config_file.write(f"centerOfScreen = {center_of_screen_value}\n")
         config_file.write(f"onnxChoice = {int(onnx_choice_entry.get())}\n")
+        config_file.write(f"selectedModel = 'SweetkindClean.json'\n")
     print("Settings saved")
 
 
