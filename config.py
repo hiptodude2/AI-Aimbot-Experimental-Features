@@ -4,7 +4,7 @@
 # Portion of screen to be captured (This forms a square/rectangle around the center of screen)
 screenShotHeight = 320
 screenShotWidth = 320
-
+e
 
 # Use left or right depending on where the interfering object is, useful for 3rd player models or large guns - JinxTheCatto
 useMask = False
