@@ -6,9 +6,7 @@ from customtkinter import *
 
 import subprocess
 
-import config 
-
-import os
+import config
 
 
 
@@ -49,12 +47,6 @@ def run_aimbot(): # Run main_tensorrt.py and close the gui
     print("Started Running 'main_tensorrt.py'")
     subprocess.Popen(['python', 'main_tensorrt.py'])
     app.quit()
-
-
-#TODO FIXXXX
-def get_themes_list():
-    themes_list = os.listdir('./themes')
-    return themes_list
 
 
 # def create frame and label seperators
@@ -161,15 +153,8 @@ bg_frame.pack(fill="both", expand=True)
 
 
 # Top bar #TODO profile menu like yes :/
-top_bar_label = CTkLabel(bg_frame, text="AI Aimbot Experimental Features", font=("Arial", 14), text_color="#FFFFFF")
+top_bar_label = CTkLabel(bg_frame, text="AI Aimbot Experimental Features", font=("Arial", 14))
 top_bar_label.place(relx=0.02, rely=0.01)
-
-#TODO THIS SHIT UGLYYYY
-get_themes = get_themes_list()
-CTkLabel(bg_frame, text="Theme Switcher succdef 1.0 100%").place(relx=0.58, rely=0.004)
-combobox = CTkComboBox(bg_frame, values=get_themes)
-combobox.set(config.selectedTheme)
-combobox.place(relx=0.81, rely=0.004)
 
 
 

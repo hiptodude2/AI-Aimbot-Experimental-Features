@@ -15,12 +15,12 @@
     "corner_radius": 6,
     "border_width": 0,
     "fg_color": [
-      "#181b28",
-      "#181b28"
+      "#d3d3d3",
+      "#d3d3d3"
     ],
     "top_fg_color": [
-      "#181b28",
-      "#181b28"
+      "#90EE90",
+      "#90EE90"
     ],
     "border_color": [
       "#10121f",
@@ -43,20 +43,20 @@
       "#080b12"
     ],
     "text_color": [
-      "#cdc8ce",
-      "#cdc8ce"
+      "#fdfa72",
+      "#fdfa72"
     ],
     "text_color_disabled": [
-      "#7a8894",
-      "#7a8894"
+      "#fdfa72",
+      "#fdfa72"
     ]
   },
   "CTkLabel": {
     "corner_radius": 0,
     "fg_color": "transparent",
     "text_color": [
-      "#cdc8ce",
-      "#cdc8ce"
+      "#000000",
+      "#000000"
     ],
     "text_color_disabled": [
       "#cdc8ce",

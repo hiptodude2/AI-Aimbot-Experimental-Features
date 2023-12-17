@@ -16,4 +16,4 @@ visuals = False
 centerOfScreen = True
 headshotMode = False
 onnxChoice = 2
-selectedTheme = 'Sweetkind.json'
+selectedTheme = 'SweetkindClean.json'
