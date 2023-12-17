@@ -8,6 +8,8 @@ import subprocess
 
 import config 
 
+import os
+
 
 
 
@@ -33,34 +35,8 @@ set_appearance_mode("Dark")  # Modes: system (default), light, dark
 
 
 #TODO theme switcher
-# NeonBanana MoonlitSky GhostTrain Oceanix Sweetkind LightMode Hades
-set_default_color_theme("./themes/NeonBanana.json")
-
-
-
-
-# Creating background frame for stacking effect :)
-bg_frame = CTkFrame(app)
-bg_frame.pack(fill="both", expand=True)
-
-
-
-
-# Top bar #TODO profile menu like yes :/
-top_bar_label = CTkLabel(bg_frame, text="AI Aimbot Experimental Features", font=("Arial", 14), text_color="#FFFFFF")
-top_bar_label.place(relx=0.02, rely=0.01)
-
-
-
-
-# Creating tabs
-tabs = CTkTabview(bg_frame)
-tabs.pack(padx=30, pady=30, fill="both", expand=True)
-
-# Tab names
-tabs.add("Welcome")
-tabs.add("Aimbot")
-tabs.add("Settings")
+# NeonBanana MoonlitSky GhostTrain Oceanix Sweetkind LightMode Hades // 
+set_default_color_theme('./themes/' + (config.selectedTheme))
 
 
 
@@ -73,6 +49,12 @@ def run_aimbot(): # Run main_tensorrt.py and close the gui
     print("Started Running 'main_tensorrt.py'")
     subprocess.Popen(['python', 'main_tensorrt.py'])
     app.quit()
+
+
+#TODO FIXXXX
+def get_themes_list():
+    themes_list = os.listdir('./themes')
+    return themes_list
 
 
 # def create frame and label seperators
@@ -141,7 +123,7 @@ def save_settings():
     auto_game_detection_value = auto_game_detection_checkbox.get() == 1
     use_fov_circle_value = use_fov_circle_checkbox.get() == 1
     center_of_screen_value = center_of_screen_checkbox.get() == 1
-    headshot_mode = headshot_mode_checkbox.get() == 1
+    headshot_mode_value = headshot_mode_checkbox.get() == 1
     cps_display_value = cps_display_checkbox.get() == 1
     visuals_value = visuals_checkbox.get() == 1
 
@@ -160,12 +142,46 @@ def save_settings():
         config_file.write(f"confidence = {float(confidence_entry.get())}\n")
         config_file.write(f"fovCircle = {use_fov_circle_value}\n")
         config_file.write(f"fovCircleSize = {fov_circle_size_entry.get()}\n")
+        config_file.write(f"headshot_mode = {headshot_mode_value}\n")
         config_file.write(f"aaQuitKey = '{aa_quit_key_entry.get()}'\n")
         config_file.write(f"cpsDisplay = {cps_display_value}\n")
         config_file.write(f"visuals = {visuals_value}\n")
         config_file.write(f"centerOfScreen = {center_of_screen_value}\n")
         config_file.write(f"onnxChoice = {int(onnx_choice_entry.get())}\n")
     print("Settings saved")
+
+
+
+
+# Creating background frame for stacking effect :)
+bg_frame = CTkFrame(app)
+bg_frame.pack(fill="both", expand=True)
+
+
+
+
+# Top bar #TODO profile menu like yes :/
+top_bar_label = CTkLabel(bg_frame, text="AI Aimbot Experimental Features", font=("Arial", 14), text_color="#FFFFFF")
+top_bar_label.place(relx=0.02, rely=0.01)
+
+#TODO THIS SHIT UGLYYYY
+get_themes = get_themes_list()
+CTkLabel(bg_frame, text="Theme Switcher succdef 1.0 100%").place(relx=0.58, rely=0.004)
+combobox = CTkComboBox(bg_frame, values=get_themes)
+combobox.set(config.selectedTheme)
+combobox.place(relx=0.81, rely=0.004)
+
+
+
+
+# Creating tabs
+tabs = CTkTabview(bg_frame)
+tabs.pack(padx=30, pady=30, fill="both", expand=True)
+
+# Tab names
+tabs.add("Welcome")
+tabs.add("Aimbot")
+tabs.add("Settings")
 
 
 
