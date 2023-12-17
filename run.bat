@@ -1,3 +1,3 @@
-echo off
+@echo off
 
 python menu.py
