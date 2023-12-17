@@ -11,7 +11,7 @@ import torch
 from models.common import DetectMultiBackend  # Add this import for YOLO model
 
 # Add these imports for YOLO model
-from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
+from config import aaMovementAmp, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshotMode, cpsDisplay, visuals, onnxChoice, centerOfScreen
 import gameSelection
 import pygetwindow as gw  # Import pygetwindow
 import ctypes
@@ -135,7 +135,7 @@ def main():
                 yMid = targets.iloc[0].current_mid_y
 
                 box_height = targets.iloc[0].height
-                if headshot_mode:
+                if headshotMode:
                     headshot_offset = box_height * 0.37
                 else:
                     headshot_offset = box_height * 0.2
@@ -162,7 +162,7 @@ def main():
                     last_mid_coord = [xMid, yMid]
 
                 # Triggerbot    Alt for Toggle    Settings in config.py
-                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
+                if win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= 45 and abs(mouseMove[1]) <= 45:
                     # Press the mouse button
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
                     # Release the mouse button

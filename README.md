@@ -1,3 +1,7 @@
+## RUN
+python menu.py
+
+
 ## Experimental Features For Tensortt and Onnx 👍
 - [x] Triggerbot
 - [x] Automatic Game Selection
