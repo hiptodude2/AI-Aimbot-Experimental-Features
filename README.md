@@ -1,10 +1,14 @@
-## Experimental Features For Tensortt Only!! made working for main_onnx.py 👍
+## RUN
+python menu.py
+
+
+## Experimental Features For Tensortt and Onnx 👍
 - [x] Triggerbot
 - [x] Automatic Game Selection
 - [x] Mask sides -JinxTheCatto
 - [ ] Recoil Control
 - [x] FOV Circle
-- [ ] UI?!?!
+- [x] UI?!?!
 - [ ] Visuals (some sort of limited esp)
 - [x] Yolov8 Models (In the discord Showcase channel)
 - [ ] Yolov8 Script

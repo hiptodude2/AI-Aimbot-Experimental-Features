@@ -8,7 +8,10 @@ import win32con
 import pandas as pd
 from utils.general import (cv2, non_max_suppression, xyxy2xywh)
 import torch
-from config import aaMovementAmp, aaTriggerBotHeight, aaTriggerBotWidth, fovCircle, fovCircleSize, useMask, aaQuitKey, confidence, headshot_mode, cpsDisplay, visuals, onnxChoice, centerOfScreen
+from models.common import DetectMultiBackend  # Add this import for YOLO model
+
+# Add these imports for YOLO model
+from config import aaMovementAmp, fovCircle, fovCircleSize, useMask, maskHeight, maskWidth, aaQuitKey, confidence, headshotMode, cpsDisplay, visuals, onnxChoice, centerOfScreen
 import gameSelection
 import pygetwindow as gw
 import ctypes
@@ -158,7 +161,7 @@ def main():
                     last_mid_coord = [xMid, yMid]
 
             # Triggerbot Alt for Toggle
-            if len(targets) > 0 and win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= aaTriggerBotWidth and abs(mouseMove[1]) <= aaTriggerBotHeight:
+            if len(targets) > 0 and win32api.GetKeyState(0xA4) and abs(mouseMove[0]) <= 50 and abs(mouseMove[1]) <= 50:
                 # Press the mouse button
                 win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
                 # Release the mouse button

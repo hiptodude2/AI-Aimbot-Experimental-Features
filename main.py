@@ -11,7 +11,7 @@ from utils.general import (cv2, non_max_suppression, xyxy2xywh)
 # Could be do with
 # from config import *
 # But we are writing it out for clarity for new devs
-from config import aaMovementAmp, useMask, maskWidth, maskHeight, aaQuitKey, screenShotHeight, confidence, headshot_mode, cpsDisplay, visuals, centerOfScreen
+from config import aaMovementAmp, useMask, maskWidth, maskHeight, aaQuitKey, screenShotHeight, confidence, headshotMode, cpsDisplay, visuals, centerOfScreen
 import gameSelection
 
 def main():
@@ -106,7 +106,7 @@ def main():
                 yMid = targets.iloc[0].current_mid_y
 
                 box_height = targets.iloc[0].height
-                if headshot_mode:
+                if headshotMode:
                     headshot_offset = box_height * 0.38
                 else:
                     headshot_offset = box_height * 0.2
